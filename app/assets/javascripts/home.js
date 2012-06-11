@@ -51,4 +51,12 @@ function addMarker()
 
 $(document).ready(function() {
 	initialize();
+	
 });
+
+$(window).resize(function () {
+    var h = $(window).height(),
+        offsetTop = 60; // Calculate the top offset
+
+    $('#map-canvas').css('height', (h - offsetTop));
+}).resize();
