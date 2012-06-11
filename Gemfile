@@ -64,23 +64,23 @@ gem "launchy", ">= 2.1.0", :group => :test
 gem "guard", ">= 0.6.2", :group => :development  # need newline here!
 gem "cancan", ">= 1.6.7"
 gem "rolify", ">= 3.1.0"
-case HOST_OS
-  when /darwin/i
-    gem 'rb-fsevent', :group => :development
-    gem 'growl', :group => :development
-  when /linux/i
-    gem 'libnotify', :group => :development
-    gem 'rb-inotify', :group => :development
-  when /mswin|windows/i
-    gem 'rb-fchange', :group => :development
-    gem 'win32console', :group => :development
-    gem 'rb-notifu', :group => :development
-end
+# case HOST_OS
+#   when /darwin/i
+#     gem 'rb-fsevent', :group => :development
+#     gem 'growl', :group => :development
+#   when /linux/i
+#     gem 'libnotify', :group => :development
+#     gem 'rb-inotify', :group => :development
+#   when /mswin|windows/i
+#     gem 'rb-fchange', :group => :development
+#     gem 'win32console', :group => :development
+#     gem 'rb-notifu', :group => :development
+# end
 
-gem "guard-bundler", ">= 0.1.3", :group => :development
-gem "guard-rails", ">= 0.0.3", :group => :development
-gem "guard-rspec", ">= 0.4.3", :group => :development
-gem "guard-cucumber", ">= 0.6.1", :group => :development
+# gem "guard-bundler", ">= 0.1.3", :group => :development
+# gem "guard-rails", ">= 0.0.3", :group => :development
+# gem "guard-rspec", ">= 0.4.3", :group => :development
+# gem "guard-cucumber", ">= 0.6.1", :group => :development
 gem "sendgrid"
 gem "devise", ">= 2.1.0"
 gem "bootstrap-sass", ">= 2.0.3"
