@@ -18,7 +18,9 @@ group :production do
   gem 'pg'
 end
 
-gem 'thin'
+group :development do
+  gem 'thin'
+end
 
 gem 'json'
 
