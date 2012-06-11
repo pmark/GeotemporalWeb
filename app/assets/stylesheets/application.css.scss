@@ -16,17 +16,44 @@
 $iconSpritePath: image-url('glyphicons-halflings.png');
 $iconWhiteSpritePath: image-url('glyphicons-halflings-white.png');
 @import "bootstrap";
-body { padding-top: 60px; }
+
+.fill_height { height:100%; }
+.height90 { height:88%; }
+
+html {
+	height:100%;
+}
+
+body { 
+	height:100%;
+}
+
 @import "bootstrap-responsive";
 
-.content {
-	background-color: #eee;
-	padding: 20px;
-	margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
-	-webkit-border-radius: 0 0 6px 6px;
-	-moz-border-radius: 0 0 6px 6px;
-	border-radius: 0 0 6px 6px;
-	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
-	box-shadow: 0 1px 2px rgba(0,0,0,.15);
+.container-fluid {
+	//padding:0;
 }
+
+.content {
+	//background-color: #eee;
+	//padding: 20px;
+	//margin: 0 -20px; 
+}
+
+
+#sidebar {
+	padding: 20px;
+}
+
+.content_box {
+	border: 1px solid #DDD;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-webkit-box-shadow: 0 1px 2px 
+	rgba(0, 0, 0, .075);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.075);
+	box-shadow: 0 1px 2px 
+	rgba(0, 0, 0, .075);
+}
+
