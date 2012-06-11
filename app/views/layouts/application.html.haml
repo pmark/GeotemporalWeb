@@ -12,7 +12,7 @@
     = csrf_meta_tags
     = yield(:head)
   %body
-    %header.navbar.navbar-top
+    %header.navbar.navbar-fixed-top
       %nav.navbar-inner
         .container
           = render 'layouts/navigation'
@@ -21,8 +21,8 @@
         .content.fill_height
           .row-fluid.fill_height
             #sidebar.span3.content_box
+              = render 'layouts/messages'
               = yield :sidebar
             .span9.content_box.height90
-              = render 'layouts/messages'
               = yield
           %footer
