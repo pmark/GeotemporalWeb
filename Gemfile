@@ -18,10 +18,10 @@ group :production do
   gem 'pg'
 end
 
-group :development do
-  gem 'thin'
-end
-
+# group :development do
+#   gem 'thin'
+# end
+# 
 gem 'json'
 
 # Gems used only for assets and not required
