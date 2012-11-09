@@ -3,6 +3,9 @@
   = javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=AIzaSyDC--on743cLRaWqTso3caJqlDguKtKOfs&sensor=false"
 
 - content_for :sidebar do
-  give it away
+  get space-timed
   
-#map_canvas{:style => "height:100%"}
+#map{:style => "height:100%"}
+
+:javascript
+  mapbox.auto('map', 'boxelder.map-2ueq8cki');

@@ -17,7 +17,10 @@ $iconSpritePath: image-url('glyphicons-halflings.png');
 $iconWhiteSpritePath: image-url('glyphicons-halflings-white.png');
 @import "bootstrap";
 
-.fill_height { height:100%; }
+.fill_height { 
+	height:100%;
+}
+
 .height90 { height:88%; }
 
 html {
@@ -46,7 +49,7 @@ body {
 
 
 #sidebar {
-	padding: 20px;
+	margin-top: 60px;	
 }
 
 .content_box {

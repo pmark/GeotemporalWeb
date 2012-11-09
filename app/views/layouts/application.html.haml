@@ -9,8 +9,13 @@
     %meta{:content => "", :name => "author"}
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
+    %script{:src => "http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.js"}
+    %link{:href => "http://api.tiles.mapbox.com/mapbox.js/v0.6.6/mapbox.css", :rel => "stylesheet"}/
     = csrf_meta_tags
     = yield(:head)
+    :css
+      body { margin:0; padding:0; }
+      #map { position:absolute; top:0; bottom:0; width:100%; }
   %body
     %header.navbar.navbar-fixed-top
       %nav.navbar-inner
