@@ -1,62 +1,44 @@
-var stockholm;
-var parliament;
-var map;
-var points = [];
-var infoWindow;
-
-function initialize() {
-	stockholm = new google.maps.LatLng(59.32522, 18.07002);
-	parliament = new google.maps.LatLng(59.327383, 18.06747);
-
-	var mapOptions = {
-		zoom: 15,
-		mapTypeId: google.maps.MapTypeId.ROADMAP,
-		center: stockholm
-	};
-
-	map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
-
-	infoWindow = new google.maps.InfoWindow;
-	google.maps.event.addListener(map, 'click', function() {
-		infoWindow.close();
-	});
-
-	addMarker();
-}
-
-function onMarkerClick() 
-{
-	var marker = this;
-	var latLng = marker.getPosition();
-
-	infoWindow.setContent('<h3>Marker position is:</h3>' + latLng.lat() + ', ' + latLng.lng());
-
-	infoWindow.open(map, marker);
-};
-
-
-function addMarker()
-{
-	// var image = 'beachflag.png';
-	var marker = new google.maps.Marker({
-		map:map,
-		// draggable:true,
-		// animation: google.maps.Animation.DROP,
-		// icon: image,
-		position: parliament
-	});	
-	
-	google.maps.event.addListener(marker, 'click', onMarkerClick);
-}
-
 $(document).ready(function() {
-	initialize();
+	var map = mapbox.map('map');
+	map.addLayer(mapbox.layer().id('boxelder.map-2ueq8cki'));
+	var instagramLayer = mapbox.markers.layer();
+
+	map.addLayer(instagramLayer);
+
+	var access_token = '11745006.ac42a06.33597d110ea4421a94ee06221c7f3ede';
+
+	function initPoints() {
+		$.ajax({
+			type: "GET",
+			dataType: "jsonp",
+			cache: false,
+			url: "https://api.instagram.com/v1/media/search?lat=45.524042&lng=-122.675545&access_token=" + access_token,
+			success: function(localData) {
+				console.log(localData);
+				$.each(localData.data, function(i) {
+					var newfeature = {
+						geometry: {
+							coordinates: [localData.data[i].location.longitude, localData.data[i].location.latitude]
+						},
+						properties: {
+							imageID: localData.data[i].images.thumbnail.url
+						}
+					};
+					instagramLayer.add_feature(newfeature);					
+					map.centerzoom(instagramLayer.extent()[0], 15);
+				})
+			}
+		});
+	}
 	
+	
+	initPoints();
+	
+	var interaction = mapbox.markers.interaction(instagramLayer);
+    // Set a custom formatter for tooltips
+    // Provide a function that returns html to be used in tooltip
+    interaction.formatter(function(feature) {
+        var o = '<img src="' + feature.properties.imageID + '">';
+        return o;
+    });
 });
-
-$(window).resize(function () {
-    var h = $(window).height(),
-        offsetTop = 60; // Calculate the top offset
-
-    $('#map-canvas').css('height', (h - offsetTop));
-}).resize();
